@@ -2,24 +2,27 @@ import React from "react";
 import { MenuIcon } from "@heroicons/react/outline";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, provider } from "../firebase";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  //in v6 useHistory is replaced by useNavigate
   const history = useHistory();
+
   const signIn = (e) => {
     e.preventDefault();
+
     auth
       .signInWithPopup(provider)
       .then(() => history.push("/channels"))
       .catch((error) => alert(error.message));
   };
+
   return (
     <header className="flex items-center justify-between py-4 px-6 bg-discord_blue">
       <a href="/">
         <img
-          src="../images/images.png"
+          // src="https://rb.gy/it5msp"
+          src=""
           alt=""
           className="w-32 h-12 object-contain"
         />

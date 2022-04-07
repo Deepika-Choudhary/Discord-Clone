@@ -26,12 +26,14 @@ const Hero = () => {
       </div>
       <div className="flex-grow">
         <img
-          src="https://rb.gy/ohwmdy"
+          // src="https://rb.gy/ohwmdy"
+          src=""
           alt=""
           className="absolute -left-36 mt-16 sm:-left-44 md:hidden"
         />
         <img
-          src="https://rb.gy/gjs8ch"
+          // src="https://rb.gy/gjs8ch"
+          src=""
           alt=""
           className="hidden md:inline absolute"
         />

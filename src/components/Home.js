@@ -1,40 +1,49 @@
 import React, { useEffect, useState } from "react";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "../firebase";
 // import db from "../firebase";
 import { Redirect } from "react-router-dom";
-// import ServerIcon from "./ServerIcon";
-import { ChevronDownIcon, PlusIcon } from "@heroicons/react/outline";
-// import { useCollection } from "react-firebase-hooks/firestore";
-import Channel from "./Channel";
+import ServerIcon from "./ServerIcon";
+import {
+  ChevronDownIcon,
+  CogIcon,
+  MicrophoneIcon,
+  PhoneIcon,
+  PlusIcon,
+} from "@heroicons/react/outline";
+import { useCollection } from "react-firebase-hooks/firestore";
+// import Channel from "./Channel";
+import Channel from "../components/Channel";
+// import Chat from "./Chat";
+import Chat from "../components/Chat";
+
 const Home = () => {
-  // const [user] = useAuthState(auth);
-  // const [channels] = useCollection(db.collection("channels"));
+  const [user] = useAuthState(auth);
+  const [channels] = useCollection(db.collection("channels"));
 
   const handleAddChannel = () => {
     const channelName = prompt("Enter a new channel name");
 
-    // if (channelName) {
-    //   db.collection("channels").add({
-    //     channelName: channelName,
-    //   });
-    // }
+    if (channelName) {
+      db.collection("channels").add({
+        channelName: channelName,
+      });
+    }
   };
 
   return (
     <>
-      {/* {!user && <Redirect to="/" />} */}
-      {/* {!user && <Navigate to="/" />} */}
+      {!user && <Redirect exact to="/" />}
       <div className="flex h-screen">
         <div className="flex flex-col space-y-3 bg-discord_serversBg p-3 min-w-max">
           <div className="server-default hover:bg-discord_purple">
             <img src="https://rb.gy/kuaslg" alt="" className="h-5" />
           </div>
           <hr className="border-gray-700 border w-8 mx-auto" />
-          {/* <ServerIcon image="https://rb.gy/qidcpp" />
           <ServerIcon image="https://rb.gy/qidcpp" />
           <ServerIcon image="https://rb.gy/qidcpp" />
-          <ServerIcon image="https://rb.gy/qidcpp" /> */}
+          <ServerIcon image="https://rb.gy/qidcpp" />
+          <ServerIcon image="https://rb.gy/qidcpp" />
           <div className="server-default hover:bg-discord_green group">
             <PlusIcon className="text-discord_green h-7 group-hover:text-white" />
           </div>
@@ -54,15 +63,47 @@ const Home = () => {
               />
             </div>
             <div className="flex flex-col space-y-2 px-2 mb-4">
-              {/* {channels?.docs.map((doc) => {
+              {channels?.docs.map((doc) => {
                 <Channel
                   key={doc.id}
                   id={doc.id}
                   channelName={doc.data().channelName}
                 />;
-              })} */}
+              })}
             </div>
           </div>
+          <div className="bg-discord_userSectionBg p- flex justify-between items-center space-x-8">
+            <div className="flex items-center">
+              <img
+                src={user?.photoURL}
+                alt=""
+                className="h-10 rounded-full"
+                onClick={() => auth.signOut()}
+              />
+              <h4 className="text-white text-xs font-medium">
+                {user?.displayName}
+                <span className="text-discord_userSectionText block">
+                  #{user?.uid.substring(0, 4)}
+                </span>
+              </h4>
+            </div>
+
+            <div className="text-gray-400 flex items-center">
+              <div className="hover:bg-discord_iconHoverBg p-2 rounded-md">
+                <MicrophoneIcon className="h-5 icon" />
+              </div>
+              <div className="hover:bg-discord_iconHoverBg p-2 rounded-md">
+                <PhoneIcon className="h-5 icon" />
+              </div>
+              <div className="hover:bg-discord_iconHoverBg p-2 rounded-md">
+                <CogIcon className="h-5 icon" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-discord_chatBg flex-grow">
+          <Chat />
         </div>
       </div>
     </>
