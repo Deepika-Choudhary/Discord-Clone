@@ -3,6 +3,7 @@ import { MenuIcon } from "@heroicons/react/outline";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, provider } from "../firebase";
 import { useHistory } from "react-router-dom";
+import images from "../images/images.png";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -20,12 +21,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between py-4 px-6 bg-discord_blue">
       <a href="/">
-        <img
-          // src="https://rb.gy/it5msp"
-          src=""
-          alt=""
-          className="w-32 h-12 object-contain"
-        />
+        <img src={images} alt="" className="w-32 h-12 object-contain" />
       </a>
       <div className="hidden lg:flex space-x-6 text-white">
         <a className="link">Download</a>

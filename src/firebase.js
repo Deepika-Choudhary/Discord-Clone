@@ -1,19 +1,31 @@
-import firebase from "firebase";
+// import firebase from "firebase/compat/app";
+import "firebase/firestore";
+import "firebase/auth";
+import firebase from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDJxWoBYuFTueRX-S5l0tFoYM_bAgHCBtY",
-  authDomain: "discored-clone.firebaseapp.com",
-  projectId: "discored-clone",
-  storageBucket: "discored-clone.appspot.com",
-  messagingSenderId: "134712771677",
-  appId: "1:134712771677:web:a58e40b73df8358857b9b4",
+  apiKey: "AIzaSyBsfO4Vt_6eDxZRFK54x18A70PnoPhlNSc",
+  authDomain: "discord-clone-ebec0.firebaseapp.com",
+  projectId: "discord-clone-ebec0",
+  storageBucket: "discord-clone-ebec0.appspot.com",
+  messagingSenderId: "1077855182160",
+  appId: "1:1077855182160:web:7af866b12547cc407de055",
+  measurementId: "G-XGHYQCBFVX",
 };
 
-const app = firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-const db = app.firestore();
+const db = firebaseApp.firestore();
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 
 export { auth, provider, db };
+// Initialize Firebase
+// const app = firebase.initializeApp(firebaseConfig);
+
+// const db = app.firestore();
+// const auth = firebase.auth();
+// const provider = new firebase.auth.GoogleAuthProvider();
+
+// export { auth, provider, db };
 // export default db;

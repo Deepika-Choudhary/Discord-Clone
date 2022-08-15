@@ -61,8 +61,8 @@ const Chat = () => {
   return (
     <div className="flex flex-col h-screen">
       <header className="flex items-center justify-center space-x-5 border-b border-gray-800 p-4 -mt-1">
-        <div>
-          <HashtagIcon className="h-6 text-discord_chatHeader" />
+        <div className>
+          {/* <HashtagIcon className="h-6 text-discord_chatHeader" /> */}
           <h4 className="text-white font-semibold">{channelName}</h4>
         </div>
         <div className="flex space-x-3">

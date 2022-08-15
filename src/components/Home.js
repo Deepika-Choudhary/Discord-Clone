@@ -63,13 +63,13 @@ const Home = () => {
               />
             </div>
             <div className="flex flex-col space-y-2 px-2 mb-4">
-              {channels?.docs.map((doc) => {
+              {channels?.docs.map((doc) => (
                 <Channel
                   key={doc.id}
                   id={doc.id}
                   channelName={doc.data().channelName}
-                />;
-              })}
+                />
+              ))}
             </div>
           </div>
           <div className="bg-discord_userSectionBg p- flex justify-between items-center space-x-8">
